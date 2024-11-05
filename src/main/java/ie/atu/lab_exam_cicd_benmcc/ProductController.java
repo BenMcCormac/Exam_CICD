@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController
 {
     public List<Product> product = new ArrayList<>();
@@ -15,6 +15,13 @@ public class ProductController
     @GetMapping("/list")
     public List<Product> getProduct()
     {
+        return product;
+    }
+
+    @PostMapping( "/product")
+    public List postProduct(@RequestBody @Valid Product newProduct)
+    {
+        product.add(newProduct);
         return product;
     }
 }
